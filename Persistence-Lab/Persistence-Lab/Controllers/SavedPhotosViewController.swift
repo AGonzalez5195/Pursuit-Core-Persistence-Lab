@@ -34,6 +34,7 @@ class SavedPhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 }
 
@@ -55,5 +56,21 @@ extension SavedPhotosViewController: UICollectionViewDataSource {
 extension SavedPhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 411  , height: 300)
+    }
+}
+
+extension SavedPhotosViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+
+        let detailVC = mainStoryBoard.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
+
+        let specificPhoto = savedPhotos[indexPath.row]
+
+        detailVC.currentPixabayPhoto = specificPhoto
+       
+
+        self.navigationController?
+            .pushViewController(detailVC, animated: true)
     }
 }

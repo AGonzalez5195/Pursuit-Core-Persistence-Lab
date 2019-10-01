@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var savedButton: UIButton!
     var currentPixabayPhoto: PixabayPhoto!
     
     @IBOutlet weak var tagsLabel: UILabel!
@@ -20,7 +21,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func SaveButtonPressed(_ sender: UIButton) {
         let savedPhoto = PixabayPhoto(webformatURL: currentPixabayPhoto.webformatURL, largeImageURL: currentPixabayPhoto.largeImageURL, views: currentPixabayPhoto.views, tags: currentPixabayPhoto.tags)
-        DispatchQueue.global(qos: .utility).async {
+        do {
             try? PixabayPhotoPersistenceHelper.manager.save(newPhoto: savedPhoto)
             DispatchQueue.main.async {
                 self.navigationController?.popViewController(animated: true)

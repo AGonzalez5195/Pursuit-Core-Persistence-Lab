@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k2E-LV-1TQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k2E-LV-1TQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,8 +37,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="411" height="300"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="q3H-0t-nxy">
-                                                    <rect key="frame" x="195" y="140" width="20" height="20"/>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="q3H-0t-nxy">
+                                                    <rect key="frame" x="187" y="132" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
                                             </subviews>
@@ -116,14 +116,22 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="411" height="338"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="giQ-E8-TzE">
-                                                    <rect key="frame" x="196" y="159" width="20" height="20"/>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="giQ-E8-TzE">
+                                                    <rect key="frame" x="188" y="151" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V95-ym-9OP">
+                                                    <rect key="frame" x="284" y="245" width="119" height="47"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="411" height="338"/>
                                         <connections>
+                                            <outlet property="checkLabel" destination="V95-ym-9OP" id="6lq-vI-m5R"/>
                                             <outlet property="pixabayImage" destination="P6K-gi-uN7" id="Lsc-tx-Kjv"/>
                                             <outlet property="spinner" destination="giQ-E8-TzE" id="hiY-53-656"/>
                                         </connections>
@@ -144,14 +152,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qaM-eX-ef0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Saved" largeTitleDisplayMode="always" id="NDn-VR-uMX"/>
+                    <navigationItem key="navigationItem" title="Saved" largeTitleDisplayMode="always" id="NDn-VR-uMX">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="plain" systemItem="trash" id="J60-b9-Q5t">
+                            <color key="tintColor" red="0.83936984569999995" green="1" blue="0.58600378220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="savedPhotoCollectionView" destination="Fpl-Y5-9PR" id="zty-Ow-pLF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddy-Gu-Lcx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850.7246376811595" y="907.36607142857133"/>
+            <point key="canvasLocation" x="2816" y="915"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="4A4-1f-EBk">
@@ -197,6 +209,7 @@
                     </view>
                     <connections>
                         <outlet property="pixabayImage" destination="oGl-BJ-qnc" id="Qc5-V9-23i"/>
+                        <outlet property="savedButton" destination="3Dg-YY-hIm" id="ygy-H8-xRL"/>
                         <outlet property="spinner" destination="dfD-un-Oka" id="JNp-gy-0wM"/>
                         <outlet property="tagsLabel" destination="KYG-Dg-2Rg" id="dd0-Q2-K2D"/>
                         <outlet property="viewsLabel" destination="gqx-sc-54r" id="EhP-vV-hp7"/>
@@ -269,7 +282,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daI-cf-mqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940.5797101449277" y="907.36607142857133"/>
+            <point key="canvasLocation" x="1958" y="915"/>
         </scene>
     </scenes>
 </document>

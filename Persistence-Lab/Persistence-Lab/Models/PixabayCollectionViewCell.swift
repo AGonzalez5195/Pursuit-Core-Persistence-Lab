@@ -12,6 +12,7 @@ class PixabayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pixabayImage: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    @IBOutlet weak var checkLabel: UILabel!
     func configureCell(from photo: PixabayPhoto) {
         spinner.startAnimating()
         spinner.isHidden = false
