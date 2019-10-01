@@ -23,4 +23,6 @@ struct PixabayWrapper: Codable {
 struct PixabayPhoto: Codable {
     let webformatURL: String
     let largeImageURL: String
+    let views: Int
+    let tags: String
 }

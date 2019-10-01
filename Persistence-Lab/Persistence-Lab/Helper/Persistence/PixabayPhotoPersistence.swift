@@ -20,7 +20,7 @@ struct PixabayPhotoPersistenceHelper {
         return try persistenceHelper.getObjects()
     }
     
-    private let persistenceHelper = PersistenceHelper<PixabayPhoto>(fileName: "photo.plist")
+    private let persistenceHelper = PersistenceHelper<PixabayPhoto>(fileName: "myPhotos.plist")
     
     private init() {}
 }
