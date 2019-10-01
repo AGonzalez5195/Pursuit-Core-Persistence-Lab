@@ -13,6 +13,22 @@ class PixabayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var checkLabel: UILabel!
+    
+    var isInEditingMode: Bool = false {
+        didSet {
+            checkLabel.isHidden = !isInEditingMode
+        }
+    }
+
+    // 2
+    override var isSelected: Bool {
+        didSet {
+            if isInEditingMode {
+                checkLabel.text = isSelected ? "✓" : ""
+            }
+        }
+    }
+    
     func configureCell(from photo: PixabayPhoto) {
         spinner.startAnimating()
         spinner.isHidden = false

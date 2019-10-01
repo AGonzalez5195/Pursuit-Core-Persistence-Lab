@@ -158,6 +158,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="J60-b9-Q5t" id="tQb-vf-nCy"/>
                         <outlet property="savedPhotoCollectionView" destination="Fpl-Y5-9PR" id="zty-Ow-pLF"/>
                     </connections>
                 </viewController>

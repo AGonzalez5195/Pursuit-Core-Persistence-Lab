@@ -12,10 +12,11 @@ class SavedPhotosViewController: UIViewController {
     
     @IBOutlet weak var savedPhotoCollectionView: UICollectionView!
     
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     var savedPhotos = [PixabayPhoto]() {
-    didSet {
-        savedPhotoCollectionView.reloadData()
+        didSet {
+            savedPhotoCollectionView.reloadData()
         }
     }
     
@@ -27,10 +28,21 @@ class SavedPhotosViewController: UIViewController {
         }
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        savedPhotoCollectionView.allowsMultipleSelection = editing
+        let indexPaths = savedPhotoCollectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            let cell = savedPhotoCollectionView.cellForItem(at: indexPath) as! PixabayCollectionViewCell
+            cell.isInEditingMode = editing
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
-         loadData()
-     }
+        loadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +60,7 @@ extension SavedPhotosViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savedPhotoCell", for: indexPath) as! PixabayCollectionViewCell
         
         cell.configureCell(from: specificPhoto)
-        
+        cell.isInEditingMode = isEditing
         return cell
     }
 }
@@ -61,16 +73,30 @@ extension SavedPhotosViewController: UICollectionViewDelegateFlowLayout {
 
 extension SavedPhotosViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if !isEditing {
+            deleteButton.isEnabled = false
+        } else {
+            deleteButton.isEnabled = true
+        }
+    }
 
-        let detailVC = mainStoryBoard.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
 
-        let specificPhoto = savedPhotos[indexPath.row]
-
-        detailVC.currentPixabayPhoto = specificPhoto
-       
-
-        self.navigationController?
-            .pushViewController(detailVC, animated: true)
+func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.count == 0 {
+        deleteButton.isEnabled = false
     }
 }
+//        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let detailVC = mainStoryBoard.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
+//
+//        let specificPhoto = savedPhotos[indexPath.row]
+//
+//        detailVC.currentPixabayPhoto = specificPhoto
+//
+//
+//        self.navigationController?
+//            .pushViewController(detailVC, animated: true)
+}
+
